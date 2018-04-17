@@ -9,7 +9,7 @@ const app = express()
 // const corsOptions = {} later
 
 //uncomment when setup
-// const api = require('./routes/api')
+const api = require('./routes/api')
 // const passport = require('./passportSetup')
 
 // app.use(cors(corsOptions))
@@ -24,6 +24,6 @@ app.use(require('express-session')({secret: 'squirrel', resave: false, saveUnini
 // app.use(passport.session())
 
 //  uncomment when api routes done
-// app.use('/api/v1', api)
+app.use('/api/v1', api)
 
 module.exports = app
