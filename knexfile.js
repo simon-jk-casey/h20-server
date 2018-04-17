@@ -4,6 +4,6 @@ module.exports = {
     connection: {
       filename: './dev.sqlite3'
     }
-  },
-  production: process.ENV.DATABASE_URL
+  }
+  // production: process.ENV.DATABASE_URL
 }
