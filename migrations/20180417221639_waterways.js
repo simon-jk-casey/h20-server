@@ -1,8 +1,12 @@
 
 exports.up = function (knex, Promise) {
-  return knex.schema.createTableIfNotExists('waterways', (table) => {
-    table.increments('id').primary()
-    table.string('waterwayName').notNullable()
+  knex.schema.hasTable('waterways').then((exists) => {
+    if (!exists) {
+      return knex.schema.createTable('waterways', (t) => {
+        t.increments('id').unsigned().primary()
+        t.string('waterwayName').notNullable()
+      })
+    }
   })
 }
 
