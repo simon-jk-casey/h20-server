@@ -1,8 +1,8 @@
 
 exports.up = function (knex, Promise) {
-  knex.schema.hasTable('assessment').then((exists) => {
+  return knex.schema.hasTable('assessment').then((exists) => {
     if (!exists) {
-      return knex.schema.createTableIfNotExists('assessments', (t) => {
+      return knex.schema.createTable('assessments', (t) => {
         t.increments('id').unsigned().primary()
         t.integer('collectionPointId').notNullable()
         t.string('date')
