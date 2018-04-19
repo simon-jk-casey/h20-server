@@ -5,7 +5,6 @@ exports.up = function (knex, Promise) {
     table.integer('streamId').notNullable()
     table.integer('farmerId').notNullable()
     table.string('coordinates').notNullable()
-    table.integer('score').notNullable()
   })
 }
 
