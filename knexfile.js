@@ -1,9 +1,12 @@
+
 module.exports = {
+
   development: {
     client: 'sqlite3',
     connection: {
       filename: './dev.sqlite3'
     }
-  }
-  // production: process.ENV.DATABASE_URL
+  },
+
+  production: process.env.DATABASE_URL
 }
