@@ -5,11 +5,6 @@ const db = require('../db/db')
 
 // GETS
 
-// this is a bullshit get to test the api endpoint, hint: it works
-router.get('/', (req, res) => {
-  console.log('hit')
-})
-
 // POSTS
 
 router.post('/enrol', (req, res) => {
