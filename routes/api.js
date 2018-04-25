@@ -18,9 +18,6 @@ router.post('/enrol', (req, res) => {
   .then(() => {
     res.sendStatus(201)
   })
-  .then(() => {
-    console.log('Done')
-  })
   .catch((err) => {
     throw err
   })
