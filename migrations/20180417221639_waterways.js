@@ -13,3 +13,5 @@ exports.up = function (knex, Promise) {
 exports.down = function (knex, Promise) {
   return knex.schema.dropTableIfExists('waterways')
 }
+
+// Dont know how much point there is to this - leaving for now
