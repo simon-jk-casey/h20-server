@@ -1,5 +1,7 @@
-var express = require('express')
-var router = express.Router()
+const express = require('express')
+const router = express.Router()
+
+const db = require('../db/db')
 
 // GETS
 
@@ -12,6 +14,16 @@ router.get('/', (req, res) => {
 
 router.post('/enrol', (req, res) => {
   console.log(req.body)
+  db.addUser(req.body)
+  .then(() => {
+    res.sendStatus(201)
+  })
+  .then(() => {
+    console.log('Done')
+  })
+  .catch((err) => {
+    throw err
+  })
 })
 
 module.exports = router
