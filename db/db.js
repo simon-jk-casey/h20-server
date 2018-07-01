@@ -15,8 +15,19 @@ function addCollectionPoint (collPt) {
   return knex('collectionPoints').insert(collPt)
 }
 
+// function addAssessment (assData) {
+//   return knex('assessments').insert(assData)
+// }
+
 function addAssessment (assData) {
-  return knex('assessments').insert(assData)
+  const { collectionPointId, surveyData, totalScore } = assData
+  const surveyResult = {
+    collectionPointId: collectionPointId,
+    surveyResult: JSON.stringify(surveyData),  //JSON PARSE THIS ON ANY GETS
+    totalScore: totalScore
+  }
+  // console.log(surveyResult)
+  return knex('survey').insert(surveyResult)
 }
 
 // FETCHING DATA
