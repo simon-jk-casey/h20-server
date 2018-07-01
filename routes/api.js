@@ -47,4 +47,14 @@ router.post('/assessment', (req, res) => {
   })
 })
 
+router.post('/test', (req, res) => {
+  console.log(req.body)
+  .then(() => {
+    res.sendStatus(201)
+  })
+  .catch((err) => {
+    throw err
+  })
+})
+
 module.exports = router
