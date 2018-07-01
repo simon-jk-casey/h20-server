@@ -47,4 +47,9 @@ router.post('/assessment', (req, res) => {
   })
 })
 
+router.post('/test', (req, res) => {
+  console.log(req.body)
+  // .then + .catch erroring, removed => promises yo - function before .then() have to return
+})
+
 module.exports = router
