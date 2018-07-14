@@ -3,7 +3,7 @@ const knexConfig = require('../knexfile')[process.env.NODE_ENV || 'development']
 const knex = Knex(knexConfig)
 
 // ADDING DATA
-function addUser (user) {
+function enrolUser (user) {
   return knex('users').insert(user)
 }
 
@@ -32,9 +32,19 @@ function addAssessment (assData) {
 
 // FETCHING DATA
 
+function getUserByUsername (username) {
+  return knex('users').where('username', `${username}`)
+}
+
+function getUserById (id) {
+  return knex('users').where('id', `${id}`)
+}
+
 module.exports = {
-  addUser,
+  enrolUser,
   addWaterway,
   addCollectionPoint,
-  addAssessment
+  addAssessment,
+  getUserByUsername,
+  getUserById
 }

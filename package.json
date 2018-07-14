@@ -7,6 +7,7 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
+    "bcrypt": "^3.0.0",
     "body-parser": "~1.15.2",
     "cookie-parser": "~1.4.3",
     "cors": "^2.8.4",
@@ -17,7 +18,7 @@
     "passport-local": "^1.0.0"
   },
   "devDependencies": {
-    "pg": "^7.4.1",
+    "pg": "^7.4.3",
     "sqlite3": "^4.0.0"
   },
   "repository": "https://github.com/simon-jk-casey/h20-server.git",

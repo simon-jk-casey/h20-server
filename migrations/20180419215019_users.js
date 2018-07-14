@@ -7,7 +7,8 @@ exports.up = function (knex, Promise) {
         t.string('name').notNullable()
         t.string('password').notNullable()
         t.string('address').notNullable()
-        t.string('phoneNum').notNullable().unique()
+        t.string('phoneNum').notNullable()
+        t.string('email').notNullable().unique()
         t.boolean('admin').notNullable()
       })
     }

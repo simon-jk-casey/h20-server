@@ -1,20 +1,41 @@
 const express = require('express')
 const router = express.Router()
+const bcrypt = require('bcrypt')
+const passport = require('../passportSetup')
 
 const db = require('../db/db')
 
+const saltRounds = 10
+
+function ensureAuthorised (req, res, next) {
+  if (req.isAuthenticated()) {
+    return next()
+  } else {
+    res.send('Unauthorised')
+  }
+}
 // GETS
 
 // POSTS
 
 router.post('/enrol', (req, res) => {
-  db.addUser(req.body)
-  .then(() => {
-    res.sendStatus(201)
+  const {username, password, email} = req.body
+  bcrypt.hash(password, saltRounds, (err, hash) => {
+    if (err) throw err
+    else {
+      const userObject = {username, password: hash, email}
+      db.enrolUser(userObject)
+      .then(() => res.json({status: 200, message: 'OK'}))
+      .catch((err) => {
+        res.send(err)
+      })
+    }
   })
-  .catch((err) => {
-    throw err
-  })
+})
+
+router.post('/login', passport.authenticate('local'), (req, res) => {
+  console.log('user' + req.user);
+  // res.json({user: req.user})
 })
 
 router.post('/water', (req, res) => {
@@ -40,7 +61,8 @@ router.post('/collection', (req, res) => {
 router.post('/assessment', (req, res) => {
   db.addAssessment(req.body)
   .then(() => {
-    res.sendStatus(201)
+    // res.sendStatus(201)
+    console.log(req.body);
   })
   .catch((err) => {
     throw err
