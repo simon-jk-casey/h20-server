@@ -32,8 +32,8 @@ function addAssessment (assData) {
 
 // FETCHING DATA
 
-function getUserByUsername (username) {
-  return knex('users').where('username', `${username}`)
+function getUserByEmail (email) {
+  return knex('users').where('email', `${email}`)
 }
 
 function getUserById (id) {
@@ -45,6 +45,6 @@ module.exports = {
   addWaterway,
   addCollectionPoint,
   addAssessment,
-  getUserByUsername,
+  getUserByEmail,
   getUserById
 }

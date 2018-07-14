@@ -19,23 +19,30 @@ function ensureAuthorised (req, res, next) {
 // POSTS
 
 router.post('/enrol', (req, res) => {
-  const {username, password, email} = req.body
+  const {name, password, address, phoneNum, email, admin} = req.body
   bcrypt.hash(password, saltRounds, (err, hash) => {
-    if (err) throw err
+    if (err) console.log(err)
     else {
-      const userObject = {username, password: hash, email}
+      const userObject = {
+        name,
+        password: hash,
+        address,
+        phoneNum,
+        email,
+        admin
+      }
       db.enrolUser(userObject)
       .then(() => res.json({status: 200, message: 'OK'}))
       .catch((err) => {
-        res.send(err)
+        console.log(err)
+        // res.send(err)
       })
     }
   })
 })
 
 router.post('/login', passport.authenticate('local'), (req, res) => {
-  console.log('user' + req.user);
-  // res.json({user: req.user})
+  res.json({user: req.user})
 })
 
 router.post('/water', (req, res) => {
@@ -62,7 +69,7 @@ router.post('/assessment', (req, res) => {
   db.addAssessment(req.body)
   .then(() => {
     // res.sendStatus(201)
-    console.log(req.body);
+    console.log(req.body)
   })
   .catch((err) => {
     throw err
