@@ -41,8 +41,11 @@ router.post('/enrol', (req, res) => {
   })
 })
 
-router.post('/login', passport.authenticate('local'), (req, res) => {
-  res.json({user: req.user})
+//  passport.authenticate('local'),
+
+router.post('/login', (req, res) => {
+  console.log(req)
+  // res.json({user: req.user})
 })
 
 router.post('/water', (req, res) => {
